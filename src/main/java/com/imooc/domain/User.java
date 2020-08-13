@@ -8,10 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Document(collection = "user")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 	@Id
@@ -20,7 +24,7 @@ public class User {
 	@NotBlank
 	private String name;
 
-	@Range(min=10, max=100)
+	@Range(min = 10, max = 100)
 	private int age;
 
 }
