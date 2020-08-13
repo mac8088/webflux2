@@ -1,5 +1,6 @@
 package com.imooc.routers;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
@@ -28,7 +29,9 @@ public class AllRouters {
 				route(GET("/"), handler::getAllUser)
 				// 创建用户
 				.andRoute(POST("/").and(accept(MediaType.APPLICATION_JSON_UTF8)),
-								handler::createUser));
+								handler::createUser)
+				// 删除用户
+				.andRoute(DELETE("/{id}"), handler::deleteUserById));
 	}
 
 }
