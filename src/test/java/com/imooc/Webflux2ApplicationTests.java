@@ -21,6 +21,7 @@ public class Webflux2ApplicationTests {
 	}
 
 	@Test
+	@SuppressWarnings("deprecation")
 	public void testGetAll() {
 		this.client.get().uri("/")
 		.accept(MediaType.APPLICATION_JSON_UTF8)
@@ -31,6 +32,7 @@ public class Webflux2ApplicationTests {
 	}
 
 	@Test
+	@SuppressWarnings("deprecation")
 	public void testCreateUser() {   
 		this.client.post().uri("/")
 		.accept(MediaType.APPLICATION_JSON_UTF8)
