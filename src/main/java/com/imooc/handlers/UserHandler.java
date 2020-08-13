@@ -44,6 +44,9 @@ public class UserHandler {
 		Mono<User> user = request.bodyToMono(User.class);
 
 		return user.flatMap(u -> {
+			// 校验代码需要放在这里
+			CheckUtil.checkName(u.getName());
+			
 			return ok().contentType(APPLICATION_JSON_UTF8)
 					.body(this.repository.save(u), User.class);
 		});
