@@ -31,4 +31,18 @@ public class UserHandler {
 		return ok().contentType(APPLICATION_JSON_UTF8)
 				.body(this.repository.findAll(), User.class);
 	}
+
+	/**
+	 * 创建用户
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public Mono<ServerResponse> createUser(ServerRequest request) {
+		Mono<User> user = request.bodyToMono(User.class);
+		return user.flatMap(u -> {
+			return ok().contentType(APPLICATION_JSON_UTF8)
+					.body(this.repository.saveAll(user), User.class);
+		});
+	}
 }
